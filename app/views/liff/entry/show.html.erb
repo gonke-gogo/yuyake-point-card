@@ -1,0 +1,13 @@
+<div
+  data-controller="liff-bootstrap"
+  data-liff-bootstrap-liff-id-value="<%= Rails.application.credentials.dig(:line, :liff_id) %>"
+  data-liff-bootstrap-return-to-value="<%= @return_to %>"
+  data-liff-bootstrap-session-url-value="<%= liff_session_path %>"
+  class="mt-16 text-center"
+>
+  <p data-liff-bootstrap-target="loading" class="text-slate-600">ログイン中です…</p>
+  <p data-liff-bootstrap-target="error" class="hidden text-red-600">
+    ログインできませんでした。LINEアプリからもう一度開き直してください。
+  </p>
+  <p data-liff-bootstrap-target="errorDetail" class="hidden mt-2 break-all text-xs text-slate-400"></p>
+</div>

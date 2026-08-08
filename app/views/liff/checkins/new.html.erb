@@ -1,0 +1,25 @@
+<div
+  data-controller="checkin"
+  data-checkin-checkin-url-value="<%= liff_event_checkin_path(@event) %>"
+  class="mt-16 text-center"
+>
+  <h1 class="text-lg font-semibold text-slate-900"><%= @event.title %></h1>
+
+  <p data-checkin-target="loading" class="mt-4 text-slate-600">
+    位置情報を確認しています…
+  </p>
+
+  <div data-checkin-target="error" class="hidden mt-4">
+    <p class="text-red-600">
+      位置情報を取得できませんでした。位置情報の利用を許可してもう一度お試しいただくか、
+      会場スタッフにお声がけください(紙カードまたはスタッフ操作でチェックインできます)。
+    </p>
+    <button
+      type="button"
+      data-action="checkin#retry"
+      class="mt-4 rounded-md bg-slate-800 px-4 py-2 text-sm font-medium text-white"
+    >
+      もう一度試す
+    </button>
+  </div>
+</div>

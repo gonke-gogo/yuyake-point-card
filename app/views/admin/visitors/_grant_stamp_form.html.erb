@@ -1,0 +1,9 @@
+<%= form_with url: grant_stamp_admin_visitor_path(visitor), method: :post, local: true do %>
+  <div class="input select input-select">
+    <label for="event_id">イベント</label>
+    <%= select_tag :event_id, options_from_collection_for_select(events, :id, :title) %>
+  </div>
+  <div class="actions">
+    <%= submit_tag "スタンプを付与する" %>
+  </div>
+<% end %>

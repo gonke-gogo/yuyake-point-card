@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "夕焼けマルシェ" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  </head>
+
+  <body class="min-h-screen bg-slate-50">
+    <main class="mx-auto max-w-md px-4 py-6">
+      <% if flash[:stamp_acquired] %>
+        <div
+          data-controller="stamp-toast"
+          class="stamp-pop mb-4 flex flex-col items-center gap-1 rounded-lg border-2 border-amber-300 bg-gradient-to-b from-amber-50 to-white px-4 py-5 text-center"
+        >
+          <div class="flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border-4 border-amber-500 bg-white">
+            <%= image_tag "stamp-badge.png", class: "h-full w-full object-cover", alt: "" %>
+          </div>
+          <p class="mt-1 text-sm font-bold text-amber-800">スタンプゲット!</p>
+          <p class="text-xs text-amber-600"><%= notice %></p>
+        </div>
+      <% elsif notice %>
+        <p class="mb-4 rounded-md bg-emerald-50 px-3 py-2 text-sm text-emerald-800"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="mb-4 rounded-md bg-red-50 px-3 py-2 text-sm text-red-800"><%= alert %></p>
+      <% end %>
+
+      <%= yield %>
+    </main>
+  </body>
+</html>
