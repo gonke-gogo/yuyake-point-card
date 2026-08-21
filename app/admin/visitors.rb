@@ -4,9 +4,9 @@ ActiveAdmin.register Visitor do
   # blank until the visitor links a LINE account themselves.
   permit_params do
     if params[:action] == "create"
-      [:display_name, :avatar_url]
+      [ :display_name, :avatar_url ]
     else
-      [:display_name, :avatar_url, :line_user_id, :card_number]
+      [ :display_name, :avatar_url, :line_user_id, :card_number ]
     end
   end
 
