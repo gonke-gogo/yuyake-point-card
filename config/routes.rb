@@ -14,10 +14,10 @@ Rails.application.routes.draw do
   namespace :liff do
     get "entry", to: "entry#show"
     get "checkin", to: "checkin#show"
-    resource :session, only: [:create]
-    resource :mypage, only: [:show], controller: "mypage"
+    resource :session, only: [ :create ]
+    resource :mypage, only: [ :show ], controller: "mypage"
     resources :events, only: [] do
-      resource :checkin, only: [:new, :create]
+      resource :checkin, only: [ :new, :create ]
     end
   end
 

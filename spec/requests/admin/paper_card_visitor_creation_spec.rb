@@ -54,7 +54,7 @@ RSpec.describe "Admin paper card visitor creation", type: :request do
 
   it "ignores a client-submitted card_number/line_user_id on creation (system-assigned only)" do
     post admin_visitors_path, params: {
-      visitor: { display_name: "テスト", card_number: "999999", line_user_id: "Uhack" },
+      visitor: { display_name: "テスト", card_number: "999999", line_user_id: "Uhack" }
     }
 
     visitor = Visitor.last

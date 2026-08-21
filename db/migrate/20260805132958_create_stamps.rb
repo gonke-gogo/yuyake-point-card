@@ -9,7 +9,7 @@ class CreateStamps < ActiveRecord::Migration[8.1]
 
       t.timestamps
     end
-    add_index :stamps, [:visitor_id, :event_id], unique: true
+    add_index :stamps, [ :visitor_id, :event_id ], unique: true
     add_foreign_key :stamps, :admin_users, column: :granted_by_admin_user_id
     add_index :stamps, :granted_by_admin_user_id
   end
