@@ -75,6 +75,15 @@ RSpec.configure do |config|
 
   config.include FactoryBot::Syntax::Methods
   config.include Devise::Test::IntegrationHelpers, type: :request
+
+  # mypage (reached via redirect from login/checkin in many unrelated
+  # specs) fetches sunset info from an external API. Stub it to fail closed
+  # by default so specs that don't care about the sunset panel don't need
+  # to know about it; specs that do (spec/requests/liff/mypage_spec.rb)
+  # override this with their own stub.
+  config.before(:each, type: :request) do
+    stub_request(:get, /api\.sunrise-sunset\.org/).to_return(status: 503)
+  end
 end
 
 Shoulda::Matchers.configure do |config|

@@ -1,6 +1,13 @@
 <h1 class="text-lg font-semibold text-slate-900">マイページ</h1>
 
-<div class="mt-4 overflow-hidden rounded-lg bg-gradient-to-br from-orange-50 via-amber-50 to-white p-4 shadow">
+<div
+  class="sunset-panel mt-4 overflow-hidden rounded-lg p-4 shadow"
+  <% if @sunset_info %>
+    data-controller="sunset-theme"
+    data-sunset-theme-sunset-at-value="<%= @sunset_info.sunset_at.iso8601 %>"
+    data-sunset-theme-dusk-at-value="<%= @sunset_info.dusk_at.iso8601 %>"
+  <% end %>
+>
   <p class="text-sm text-slate-500">現在のランク</p>
   <p class="text-2xl font-bold text-slate-900"><%= @rank&.name || "ランクなし" %></p>
   <% if @rank&.benefit_description.present? %>
