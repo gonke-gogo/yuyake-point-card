@@ -31,3 +31,16 @@
 .stamp-toast-fade-out {
   animation: stamp-toast-fade-out 0.4s ease forwards;
 }
+
+/* Defaults match the static orange-50/amber-50/white gradient this
+   replaces, so pages without sunset data (no controller attached) still
+   render the original look. */
+.sunset-panel {
+  background: linear-gradient(
+    to bottom right,
+    var(--sky-from, #fff7ed),
+    var(--sky-via, #fffbeb),
+    var(--sky-to, #ffffff)
+  );
+  transition: background 60s linear;
+}
